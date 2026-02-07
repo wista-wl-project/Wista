@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"></head><body><script>
+(async () => {
+  const url = "https://raw.githubusercontent.com/wista-wl-project/Wista/refs/heads/main/index.html";
+  try {
+    const res = await fetch(url);
+    const html = await res.text();
+    const win = window.open("about:blank", "_blank");
+    if (!win) {
+      alert("ポップアップがブロックされました");
+      return;
+    }
+    win.document.open();
+    win.document.write(html);
+    win.document.close();
+  } catch (e) {
+    console.error(e);
+    alert("読み込み失敗");
+  }
+})();
+</script>
+<noscript>
+  javascriptが必須です。
+</noscript></body></html>
